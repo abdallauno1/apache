@@ -44,7 +44,7 @@ stages{
 						sudo dpkg -i containerd.io_1.2.0-1_amd64.deb
 						sudo dpkg -i docker-ce-cli_18.09.0~3-0~ubuntu-xenial_amd64.deb
 						sudo dpkg -i docker-ce-rootless-extras_20.10.0~3-0~ubuntu-xenial_amd64.deb
-						sudo usermod -aG root,docker vagrant
+						sudo usermod -aG docker vagrant
 					   '''
 					
 					/*
