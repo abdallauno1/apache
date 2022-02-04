@@ -64,8 +64,12 @@ stages{
 	}
 	stage('Install Ruby and Test Kitchen'){
 		steps{
-			sh 'sudo apt-get install -y rubygems ruby-dev ruby'
-			sh 'chef gem install kitchen-docker' 
+			sh '''#!/bin/bash
+				sudo apt-get install -y rubygems ruby-dev ruby
+				chef gem install kitchen-docker
+		           '''		
+		   /*	sh 'sudo apt-get install -y rubygems ruby-dev ruby'
+			sh 'chef gem install kitchen-docker'  */
 		}
 	}
 	stage ('Run test kitchen'){
