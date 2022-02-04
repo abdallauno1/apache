@@ -17,7 +17,7 @@ platforms:
 suites:
  - name: default
    run_list:
-     - recipe[pache::default]
+     - recipe[apache::default]
    verifier:
     inspec_tests:
      - test/integration/default
