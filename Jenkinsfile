@@ -55,6 +55,13 @@ stages{
 			sh 'sudo kitchen test'
 		}
 	}
+	stage('Bootstrap the node'){
+	steps{
+	 withCredentials ([sshUserPrivateKey(credentialsId: 'vagrant-test', keyFileVariable: 'AGENT_SSHKEY', passphraseVariable: '',usernameVariable:'')]){
+		 sh "knife bootstrap 192.168.1.80 -x vagrant -P vagrant --node-name prod  --sudo"
+		 }	
+	 }
+	}
 	stage('Upload Cookbook to Chef Server, Converge Nodes'){
 		steps{
 			withCredentials([zip(credentialsId: 'chef-server-creds' , varibale: 'CHEFREPO')]){
