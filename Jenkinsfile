@@ -15,11 +15,11 @@ stages{
 				}else{
 					sh '''#!/bin/bash
 
-				    		  echo "Hello from bash"
-				   		  echo "Who I'm $SHELL"
+				    		  wget wget https://packages.chef.io/files/stable/chefdk/4.13.3/ubuntu/18.04/chefdk_4.13.3-1_amd64.deb
+				   		  sudo dpkg -i chefdk_4.13.3-1_amd64.deb
                				    '''
-					sh 'wget wget https://packages.chef.io/files/stable/chefdk/4.13.3/ubuntu/18.04/chefdk_4.13.3-1_amd64.deb'
-					sh 'sudo dpkg -i chefdk_4.13.3-1_amd64.deb'
+					/* sh 'wget wget https://packages.chef.io/files/stable/chefdk/4.13.3/ubuntu/18.04/chefdk_4.13.3-1_amd64.deb'
+					   sh 'sudo dpkg -i chefdk_4.13.3-1_amd64.deb' */
 				}
 			}
 		}
