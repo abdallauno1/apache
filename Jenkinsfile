@@ -37,6 +37,17 @@ stages{
 				if (dockerExists)
 					echo 'Skipping Docker install...already installed'
 				else{
+					sh '''#!/bin/bash
+						wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/containerd.io_1.2.0-1_amd64.deb
+						wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce-cli_18.09.0~3-0~ubuntu-xenial_amd64.deb
+						wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce-rootless-extras_20.10.0~3-0~ubuntu-xenial_amd64.deb
+						sudo dpkg -i containerd.io_1.2.0-1_amd64.deb
+						sudo dpkg -i docker-ce-cli_18.09.0~3-0~ubuntu-xenial_amd64.deb
+						sudo dpkg -i docker-ce-rootless-extras_20.10.0~3-0~ubuntu-xenial_amd64.deb
+						sudo usermod -aG root,docker vagrant
+					   '''
+					
+					/*
 					sh 'wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/containerd.io_1.2.0-1_amd64.deb'
 					sh 'wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce-cli_18.09.0~3-0~ubuntu-xenial_amd64.deb'
 					sh 'wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce-rootless-extras_20.10.0~3-0~ubuntu-xenial_amd64.deb'
@@ -44,6 +55,7 @@ stages{
 					sh 'sudo dpkg -i docker-ce-cli_18.09.0~3-0~ubuntu-xenial_amd64.deb'
 					sh 'sudo dpkg -i docker-ce-rootless-extras_20.10.0~3-0~ubuntu-xenial_amd64.deb'
 					sh 'sudo usermod -aG root,docker vagrant'
+					*/
 				 }
 				 /* check if docker is installed correctly */
 				 sh 'sudo docker run hello-worl'	
@@ -52,7 +64,7 @@ stages{
 	}
 	stage('Install Ruby and Test Kitchen'){
 		steps{
-			sh 'sudo apt-get install -y rubygems ruby-dev'
+			sh 'sudo apt-get install -y rubygems ruby-dev ruby'
 			sh 'chef gem install kitchen-docker' 
 		}
 	}
