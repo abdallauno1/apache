@@ -58,7 +58,7 @@ stages{
 	stage('Bootstrap the node'){
 	steps{
 	 withCredentials ([sshUserPrivateKey(credentialsId: 'vagrant-test', keyFileVariable: 'AGENT_SSHKEY', passphraseVariable: '',usernameVariable:'')]){
-		 sh "knife bootstrap 192.168.1.80 -x vagrant -P vagrant --node-name prod  --sudo"
+		 sh "knife bootstrap 192.168.1.70 -x vagrant -P vagrant --node-name test  --sudo"
 		 }	
 	 }
 	}
