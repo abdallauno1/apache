@@ -58,7 +58,7 @@ stages{
 					*/
 				 }
 				 /* check if docker is installed correctly */
-				 sh 'sudo docker run hello-worl'	
+				 sh 'sudo docker run hello-world'	
 			}
 		}	
 	}
