@@ -2,7 +2,8 @@ driver:
   name: docker
 
 provisioner:
-  name: chef_zero
+  client_rb:
+    chef_license: accept
 
 always_update_cookbooks: true
 product_name: chef
