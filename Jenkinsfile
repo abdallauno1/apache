@@ -26,7 +26,7 @@ stages{
 	}	
 	stage ('Install Docker') {
 		steps {
-			scripts{
+			script {
 				def dockerExists = fileExsits 'usr/bin/docker'
 				if (dockerExists)
 					echo 'Skipping Docker install...already installed'
