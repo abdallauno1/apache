@@ -9,10 +9,15 @@ stages{
 	stage('Install ChefDK'){
 	  steps{
 			script{
-				def exists  = fileExists '/usr/bin/chef-client'
-				if (exists) {
+				def chefDKexists  = fileExists '/usr/bin/chef-client'
+				if (chefDKexists) {
 					echo 'Skipping Chef install...already installed'
 				}else{
+					sh '''#!/bin/bash
+
+				    		  echo "Hello from bash"
+				   		  echo "Who I'm $SHELL"
+               				    '''
 					sh 'wget wget https://packages.chef.io/files/stable/chefdk/4.13.3/ubuntu/18.04/chefdk_4.13.3-1_amd64.deb'
 					sh 'sudo dpkg -i chefdk_4.13.3-1_amd64.deb'
 				}
@@ -27,7 +32,7 @@ stages{
 	stage ('Install Docker') {
 		steps {
 			script {
-				def dockerExists = fileExsits 'usr/bin/docker'
+				def dockerExists = fileExists 'usr/bin/docker'
 				if (dockerExists)
 					echo 'Skipping Docker install...already installed'
 				else{
