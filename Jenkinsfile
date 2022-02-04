@@ -33,7 +33,7 @@ stages{
 	stage ('Install Docker') {
 		steps {
 			script {
-				def dockerExists = fileExists 'usr/test/bin/docker'
+				def dockerExists = fileExists 'usr/bin/docker'
 				if (dockerExists)
 					echo 'Skipping Docker install...already installed'
 				else{
