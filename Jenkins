@@ -24,6 +24,13 @@ stages{
 		}
 	}
 
+	stage('Download Cookbook'){
+		steps{
+			git credentialsId: 'github-creds', url: 'git@github.com:https://github.com/abdallauno1/apache.git'
+		}
+	}
+		
+
 	stage ('Install Docker') {
 		steps {
 			scripts{
@@ -58,15 +65,22 @@ stages{
 		}
 	}
 
-	stage('Upload Cookbook to Chef Server, converge Nodes'){
+	stage('Upload Cookbook to Chef Server, Converge Nodes'){
 		steps{
 			withCredentials([zip(credentialsId: 'chef-server-creds' , varibale: 'CHEFREPO')]){
+
 			  sh 'mkdir -p $CHEFREPO/chef-repo/cookbooks/apache'
+
 			  sh 'sudo rm -rf $WORKSPACE/Berksfile.lock'
+
 			  sh 'mv $WORKSPACE/* $CHEFREPO/chef-repo/cookbooks/apache'
+
 			  sh "kinfe cookbook upload apache --force -o $CHEFREPO/chef-repo/cookbooks -c $CHEFREPO/chef-repo/.chef/knife.rb"
-			withCredentials ([sshUserPrivateKey(credentialsId: 'ec2-creds', keyFileVariable: 'AGENT_SSHKEY', passphraseVariable: '',usernameVariable:'')]){
+
+			withCredentials ([sshUserPrivateKey(credentialsId: 'vagrant-test', keyFileVariable: 'AGENT_SSHKEY', passphraseVariable: '',usernameVariable:'')]){
+
 			  sh "kinfe ssh 'role:webserver' -x vagrant -i $AGENT_SSHKEY 'sudo chef-client' -c $CHEFREPO/chef-repo/.chef/knife.rb"
+
 			 }  
 		   }
 		}
