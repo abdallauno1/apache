@@ -33,18 +33,18 @@ stages{
 	stage ('Install Docker') {
 		steps {
 			script {
-				def dockerExists = fileExists 'usr/bin/docker'
+				def dockerExists = fileExists 'usr/test/bin/docker'
 				if (dockerExists)
 					echo 'Skipping Docker install...already installed'
 				else{
 					sh '''#!/bin/bash
-						wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/containerd.io_1.2.0-1_amd64.deb
-						wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce-cli_18.09.0~3-0~ubuntu-xenial_amd64.deb
-						wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce-rootless-extras_20.10.0~3-0~ubuntu-xenial_amd64.deb
-						sudo dpkg -i containerd.io_1.2.0-1_amd64.deb
-						sudo dpkg -i docker-ce-cli_18.09.0~3-0~ubuntu-xenial_amd64.deb
-						sudo dpkg -i docker-ce-rootless-extras_20.10.0~3-0~ubuntu-xenial_amd64.deb
-						sudo usermod -aG docker vagrant
+						sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+						curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+						sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+						sudo apt-get update
+						apt-cache policy docker-ce
+						sudo apt install docker-ce -y
+						sudo usermod -aG docker ${USER}
 					   '''
 					
 					/*
