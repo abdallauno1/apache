@@ -9,11 +9,11 @@ stages{
 	stage('Install ChefDK'){
 	  steps{
 			script{
-				def checkdkExists = fileExsists '/usr/bin/chef-client'
-				if(checkdkExists){
+				def exists  = fileExists '/usr/bin/chef-client'
+				if (exists) {
 					echo 'Skipping Chef install...already installed'
 				}else{
-					sh 'wget https://packages.chef.io/files/stable/chefdk/4.13.3/ubuntu/18.04/chefdk_4.13.3-1_amd64.deb'
+					sh 'wget wget https://packages.chef.io/files/stable/chefdk/4.13.3/ubuntu/18.04/chefdk_4.13.3-1_amd64.deb'
 					sh 'sudo dpkg -i chefdk_4.13.3-1_amd64.deb'
 				}
 			}
