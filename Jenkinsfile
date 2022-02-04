@@ -1,7 +1,7 @@
 pipeline {
 	agent {label 'vagrant-worker'}
 stages{
-    stage{
+    stage ('Update machine'){
 	 steps {
 		sh 'sudo apt-get update'
 	    }
