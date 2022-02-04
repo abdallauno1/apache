@@ -1,5 +1,5 @@
 pipeline {
-	agent any
+	agent {label 'MasterNode'}
 stages{
     stage ('Update machine'){
 	 steps {
