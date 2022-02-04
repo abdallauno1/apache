@@ -21,7 +21,7 @@ stages{
 	}
 	stage('Download Cookbook'){
 		steps{
-			git credentialsId: 'github-creds', url: 'git@github.com:https://github.com/abdallauno1/apache.git'
+			git credentialsId: 'github-creds', url: 'https://github.com/abdallauno1/apache.git'
 		}
 	}	
 	stage ('Install Docker') {
