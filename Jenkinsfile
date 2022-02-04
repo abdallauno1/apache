@@ -34,9 +34,9 @@ stages{
 		steps {
 			script {
 				def dockerExists = fileExists 'usr/bin/docker'
-				if (dockerExists)
+				if (dockerExists){
 					echo 'Skipping Docker install...already installed'
-				else{
+				}else{
 					sh '''#!/bin/bash
 						sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
 						curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
