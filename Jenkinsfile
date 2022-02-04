@@ -1,15 +1,11 @@
 pipeline {
 	agent {label 'vagrant-worker'}
-
 stages{
-
     stage{
 	 steps {
 		sh 'sudo apt-get update'
 	    }
 	  }
-
-
 	stage('Install ChefDK'){
 	  steps{
 			script{
@@ -23,14 +19,11 @@ stages{
 			}
 		}
 	}
-
 	stage('Download Cookbook'){
 		steps{
 			git credentialsId: 'github-creds', url: 'git@github.com:https://github.com/abdallauno1/apache.git'
 		}
-	}
-		
-
+	}	
 	stage ('Install Docker') {
 		steps {
 			scripts{
@@ -51,20 +44,17 @@ stages{
 			}
 		}	
 	}
-
 	stage('Install Ruby and Test Kitchen'){
 		steps{
 			sh 'sudo apt-get install -y rubygems ruby-dev'
 			sh 'chef gem install kitchen-docker' 
 		}
 	}
-
 	stage ('Run test kitchen'){
 		steps{
 			sh 'sudo kitchen test'
 		}
 	}
-
 	stage('Upload Cookbook to Chef Server, Converge Nodes'){
 		steps{
 			withCredentials([zip(credentialsId: 'chef-server-creds' , varibale: 'CHEFREPO')]){
