@@ -98,7 +98,7 @@ stages{
 				    if (repoCloned){
 					  sh '''
 						echo 'Skipping clone repo ... repo cloned'
-						mv $repoCloned ~/chef-repo/cookbooks
+						mv /home/vagrant/jenkins-agent/workspace/chef-conf-pipeline/apache ~/chef-repo/cookbooks
 
 					     '''	
 				    }else{
