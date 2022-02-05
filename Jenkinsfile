@@ -102,12 +102,11 @@ stages{
 
 					     '''	
 				    }else{
-					 sh 'git clone https://github.com/abdallauno1/apache.git' 
-					 sh 'mv /$WORKSPACE/$JOB_NAME/apache'
+					 sh 'git clone https://github.com/abdallauno1/apache.git' 					 
 					 echo "$JOB_NAME" 
 					    
-				
-			}		
+				}	
+				sh 'mv /$WORKSPACE/$JOB_NAME/apache'
 		     }
 		 }
 	 }
