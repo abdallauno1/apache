@@ -96,7 +96,7 @@ stages{
 		steps{
 			withCredentials([zip(credentialsId: 'CHEFREPO', variable: 'chef-server-creds')]){
 
-			  sh 'mv $CHEFREPO ~/chef-repo/.chef'
+			  sh 'mv $chef-server-creds/* ~/chef-repo/.chef'
 
 			  sh 'sudo rm -rf $WORKSPACE/Berksfile.lock'
 		/*
