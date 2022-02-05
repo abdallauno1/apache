@@ -79,7 +79,13 @@ stages{
 		}
 	}
 	*/
-	stage('Bootstrap the node'){
+	stage ('Creating directory for the configuration...'){
+		steps{
+			sh 'mkdir ~/chef-repo/ &&  mkdir ~/chef-repo/.chef '
+		}
+	}
+	
+	stage('Copy server credentials'){
 	steps{
 	 withCredentials ([sshUserPrivateKey(credentialsId: 'vagrant-test', keyFileVariable: 'AGENT_SSHKEY', passphraseVariable: '',usernameVariable:'')]){
 		 sh "knife bootstrap 192.168.1.70 -x vagrant -P vagrant --node-name test  --sudo"
@@ -90,10 +96,10 @@ stages{
 		steps{
 			withCredentials([zip(credentialsId: 'chef-server-creds' , varibale: 'CHEFREPO')]){
 
-			  sh 'mkdir -p $CHEFREPO/chef-repo/cookbooks/apache'
+			  sh 'mv $CHEFREPO ~/chef-repo/.chef'
 
 			  sh 'sudo rm -rf $WORKSPACE/Berksfile.lock'
-
+		/*
 			  sh 'mv $WORKSPACE/* $CHEFREPO/chef-repo/cookbooks/apache'
 
 			  sh "kinfe cookbook upload apache --force -o $CHEFREPO/chef-repo/cookbooks -c $CHEFREPO/chef-repo/.chef/knife.rb"
@@ -101,7 +107,7 @@ stages{
 			withCredentials ([sshUserPrivateKey(credentialsId: 'vagrant-test', keyFileVariable: 'AGENT_SSHKEY', passphraseVariable: '',usernameVariable:'')]){
 
 			  sh "kinfe ssh 'role:webserver' -x vagrant -i $AGENT_SSHKEY 'sudo chef-client' -c $CHEFREPO/chef-repo/.chef/knife.rb"
-
+		*/
 			 }  
 		   }
 		}
