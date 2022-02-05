@@ -25,18 +25,27 @@ stages{
 		}
 	}
 	
-	stage('Download Cookbook'){
+	stage('Clone github repo & download Cookbook'){
 		steps{
-			sh 'git clone https://github.com/abdallauno1/apache.git'
-			
+			def cloned  = fileExists '/home/vagrant/jenkins-agent/workspace/chef-conf-pipeline/apache
+			if (cloned){
+				echo 'Skipping clone repo ... repo cloned'
+			}else{
+				sh 'git clone https://github.com/abdallauno1/apache.git'
+			}
 		}
 	}	
 	
 
 
 	stage ('Creating directory for the configuration...'){
+	        def dirExists  = fileExists '/home/vagrant/chef-repo'
+		if (dirExists) {
+			echo 'Skipping creating directory ...directory present'
+		}else{
 		steps{
 			sh 'mkdir ~/chef-repo/ &&  mkdir ~/chef-repo/.chef '
+		  }
 		}
 	}
 
