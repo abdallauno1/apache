@@ -57,7 +57,8 @@ stages{
 		steps{
 			withCredentials([string(credentialsId: 'CHEF-USER-KEY', variable: 'chef-user-key')]) {
 					      sh '''
-					      	   cat $chef-user-key >> ~/chef-repo/.chef/abdallauno1.pem
+					      	   set +x
+					      	   cat "$chef-user-key" >> ~/chef-repo/.chef/abdallauno1.pem
 						   
 						 '''
 
