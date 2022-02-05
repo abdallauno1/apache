@@ -72,7 +72,7 @@ stages{
 					/* add all nodes you need */
 				      sh '''
 			      	    set +x
-			      	    knife bootstrap 192.168.1.70 -x vagrant -P vagrant --node-name test  --sudo
+			      	    knife bootstrap 192.168.1.70 -x vagrant -P vagrant --node-name test  --sudo -y
 
 					 '''
 		}
