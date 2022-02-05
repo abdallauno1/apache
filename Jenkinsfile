@@ -56,7 +56,7 @@ stages{
 	stage('Copy server credentials'){
 		steps{
 			withCredentials([file(credentialsId: 'CHEF-USER-KEY', variable: 'chef-user-key')]) {
-					      sh "cp \$chef-user-key ~/chef-repo/.chef"
+					      sh "sudo cp -Rv \$chef-user-key ~/chef-repo/.chef"
 
 		   }
 		}
