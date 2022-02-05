@@ -84,15 +84,15 @@ stages{
 			sh 'mkdir ~/chef-repo/ &&  mkdir ~/chef-repo/.chef '
 		}
 	}
-	
+	/*
 	stage('Copy server credentials'){
 	steps{
 	 withCredentials ([sshUserPrivateKey(credentialsId: 'vagrant-test', keyFileVariable: 'AGENT_SSHKEY', passphraseVariable: '',usernameVariable:'')]){
 		 sh "knife bootstrap 192.168.1.70 -x vagrant -P vagrant --node-name test  --sudo"
 		 }	
 	 }
-	}
-	stage('Upload Cookbook to Chef Server, Converge Nodes'){
+	}*/
+	stage('Copy server credentials'){
 		steps{
 			withCredentials([zip(credentialsId: 'chef-server-creds' , varibale: 'CHEFREPO')]){
 
