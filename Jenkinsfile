@@ -24,12 +24,14 @@ stages{
 			}
 		}
 	}
+	/*
 	stage('Download Cookbook'){
 		steps{
 			sh 'git clone https://github.com/abdallauno1/apache.git'
 			/* git credentialsId: 'github-creds', url: 'git@github.com:abdallauno1/apache.git' */
 		}
 	}	
+	*/
 	stage ('Install Docker') {
 		steps {
 			script {
@@ -58,10 +60,11 @@ stages{
 					*/
 				 }
 				 /* check if docker is installed correctly */
-				 sh 'sudo docker run hello-world'	
+				/*  sh 'sudo docker run hello-world'	*/
 			}
 		}	
 	}
+	/*
 	stage('Install Ruby and install kitchen-docker'){
 		steps{
 			sh '''#!/bin/bash
@@ -71,7 +74,7 @@ stages{
 		   /*	sh 'sudo apt-get install -y rubygems ruby-dev ruby'
 			sh 'chef gem install kitchen-docker'  */
 		}
-	}
+	} */
 	/*
 	stage ('Run test kitchen'){
 		steps{
@@ -96,7 +99,7 @@ stages{
 		steps{
 			withCredentials([zip(credentialsId: 'CHEFREPO', variable: 'chef-server-creds')]){
 
-			  sh 'mv $chef-server-creds/* ~/chef-repo/.chef'
+			  sh 'mv $chef-server-creds ~/chef-repo/.chef'
 
 			  sh 'sudo rm -rf $WORKSPACE/Berksfile.lock'
 		/*
