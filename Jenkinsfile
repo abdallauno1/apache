@@ -92,17 +92,17 @@ stages{
 	stage('removing directory'){
 		
 		steps{
-			scripts{
+		    scripts{
 			def fileApa  = fileExists '$WORKSPACE/apache'
-			   if (fileApa){
-					  sh 'rm -rf $WORKSPACE/apache'	    
+			    if (fileApa){
+				    sh 'rm -rf $WORKSPACE/apache'	    
 			 	   }
-			def cook  = fileExists '~/chef-repo/cookbooks/apache'
-			   if (cook){
-				sh 'rm -rf ~/chef-repo/cookbooks/apache/'	
-			}
-	   	    }
-		}		
+			 def cook  = fileExists '~/chef-repo/cookbooks/apache'
+			    if (cook){
+				   sh 'rm -rf ~/chef-repo/cookbooks/apache/'	
+			 }
+	   	     }
+		 }		
 	  }
 	
 	 stage('Clone github repo & download Cookbook'){
