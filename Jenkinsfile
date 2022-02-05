@@ -94,11 +94,11 @@ stages{
 	 stage('Clone github repo & download Cookbook'){
 		steps{
 			script{
-				def repoCloned  = fileExists '/$WORKSPACE/$JOB_NAME/apache'
+				def repoCloned  = fileExists '$WORKSPACE/$JOB_NAME/apache'
 				    if (repoCloned){
 					  sh '''
 						echo 'Skipping clone repo ... repo cloned'
-						mv /$WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks
+						mv $WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks
 
 					     '''	
 				    }else{
@@ -106,7 +106,7 @@ stages{
 					 echo "$JOB_NAME" 
 					    
 				}	
-				sh 'mv /$WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks'
+				sh 'mv $WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks'
 		     }
 		 }
 	 }
