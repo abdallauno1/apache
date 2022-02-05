@@ -60,9 +60,9 @@ stages{
 					 file(credentialsId: 'chef-config-key', variable: 'CONFIG')]) {
 					      sh '''
 					      	   set +x
-					      	   cp --recursive "$USER"  ~/chef-repo/.chef/
-						   cp --recursive "$ORG"  ~/chef-repo/.chef/
-						   cp --recursive "$CONFIG"  ~/chef-repo/.chef/
+					      	   sudo cp --recursive "$USER"  ~/chef-repo/.chef/
+						   sudo cp --recursive "$ORG"  ~/chef-repo/.chef/
+						   sudo cp --recursive "$CONFIG"  ~/chef-repo/.chef/
 						   
 						 '''
 
