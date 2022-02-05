@@ -111,9 +111,10 @@ stages{
 			 script{
 				def getRepo  = fileExists '~/chef-repo/cookbooks/apache'
 				    if (getRepo){
-					  sh 'rm -rf ~/chef-repo/cookbooks/apache'
+					  sh 'rm -rf ~/chef-repo/cookbooks/apache/*'
 				    } 
-				   sh 'mv $WORKSPACE/apache ~/chef-repo/cookbooks/*'
+				  
+				   sh 'mv $WORKSPACE/apache ~/chef-repo/cookbooks/'
 				}
 		   	    }
 	            }
