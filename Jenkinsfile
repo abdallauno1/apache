@@ -95,19 +95,17 @@ stages{
 		steps{
 			script{
 				def repoCloned  = fileExists '/home/vagrant/jenkins-agent/workspace/chef-conf-pipeline/apache'
-				if (repoCloned){
-
-					sh '''
+				    if (repoCloned){
+					  sh '''
 						echo 'Skipping clone repo ... repo cloned'
 						mv $repoCloned ~/chef-repo/cookbooks
 
-					   '''	
-			}else{
-					sh '''
+					     '''	
+				    }else{
+					 sh '''
 				 		sh 'git clone https://github.com/abdallauno1/apache.git'
 				 		 mv $WORKSPACE/$JOB_NAME/apache
 				 	   '''
-
 			   }
 			}		
 		     }
@@ -125,7 +123,7 @@ stages{
 
 				 '''
 		}
-	 }
+	   }
 
 	  stage('Run the cookbook'){
 		steps{
@@ -140,9 +138,9 @@ stages{
 			  		sh "kinfe ssh 'role:webserver' -x vagrant -i $AGENT_SSHKEY 'sudo chef-client'"
 
 			 } 
-				 '''
+			 '''
 		}
-	 }
+	     }
 
 
    }
