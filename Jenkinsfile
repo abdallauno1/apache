@@ -96,25 +96,27 @@ stages{
 			script{
 				def repoCloned  = fileExists '$WORKSPACE/apache'
 				    if (repoCloned){
-					  sh '''
-					  	rm -rf $WORKSPACE/apache
-						
-					     '''	
+					  sh 'rm -rf $WORKSPACE/apache'
 				    }else{
 					 					 
 					 echo "$JOB_NAME"     
 				}
 				sh 'git clone https://github.com/abdallauno1/apache.git' 
 		   	  }
-		 }
-	 }
+		      }
+	  	}
 	
 	 stage('Moving file to cookbooks dir'){
-	 steps{
-			
-			sh 'mv $WORKSPACE/apache ~/chef-repo/cookbooks'
-	       }
-	    }
+		 steps{
+			 script{
+				def getRepo  = fileExists '$WORKSPACE/apache'
+				    if (getRepo){
+					  sh 'rm -rf $WORKSPACE/apache'
+				    } 
+				   sh 'mv $WORKSPACE/apache ~/chef-repo/cookbooks'
+				}
+		   	    }
+	            }
 	
 	 stage('Upload the cookbook and add to the Node'){
 		steps{
