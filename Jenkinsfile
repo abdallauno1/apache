@@ -94,7 +94,7 @@ stages{
 	}*/
 	stage('Copy server credentials'){
 		steps{
-			withCredentials([zip(credentialsId: 'chef-server-creds' , varibale: 'CHEFREPO')]){
+			withCredentials([zip(credentialsId: 'CHEFREPO', variable: 'chef-server-creds')]){
 
 			  sh 'mv $CHEFREPO ~/chef-repo/.chef'
 
