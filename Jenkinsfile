@@ -55,10 +55,14 @@ stages{
     	}
 	stage('Copy server credentials'){
 		steps{
-			withCredentials([file(credentialsId: 'chef-user-key', variable: 'USER')]) {
+			withCredentials([file(credentialsId: 'chef-user-key', variable: 'USER'),
+					 file(credentialsId: 'chef-org-key',  variable: 'ORG'),
+					 file(credentialsId: 'chef-config-key', variable: 'CONFIG')]) {
 					      sh '''
 					      	   set +x
 					      	   cp --recursive "$USER"  ~/chef-repo/.chef/
+						   cp --recursive "$ORG"  ~/chef-repo/.chef/
+						   cp --recursive "$CONFIG"  ~/chef-repo/.chef/
 						   
 						 '''
 
