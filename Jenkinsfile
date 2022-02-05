@@ -28,10 +28,10 @@ stages{
 	stage('Download Cookbook'){
 		steps{
 			sh 'git clone https://github.com/abdallauno1/apache.git'
-			/* git credentialsId: 'github-creds', url: 'git@github.com:abdallauno1/apache.git' */
+			
 		}
-	}	
-	*/
+	}	*/
+	
 	stage ('Install Docker') {
 		steps {
 			script {
