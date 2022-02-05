@@ -81,15 +81,15 @@ stages{
 	 
  	 stage('Creating cookbooks directory...'){
 	    steps{
-			script{
-	       	  def dirCookbook  = fileExists '/home/vagrant/cookbooks'
-			  if (dirCookbook) {
-				echo 'Skipping creating directory ...directory present'
-			}else{
-			    sh 'mkdir ~/chef-repo/cookbooks'
-				}			
-			}
+		script{
+		  def dirCookbook  = fileExists '~/chef-repo/cookbooks'
+		  if (dirCookbook) {
+			echo 'Skipping creating directory ...directory present'
+		   }else{
+		        sh 'mkdir ~/chef-repo/cookbooks'
+		    }			
 		}
+	     }
 	 }
 
 
