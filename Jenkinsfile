@@ -103,11 +103,17 @@ stages{
 					 sh 'git clone https://github.com/abdallauno1/apache.git' 					 
 					 echo "$JOB_NAME" 
 					    
-				}	
-				sh 'mv $WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks'
-		     }
+				}					
+		   	  }
 		 }
 	 }
+	 stage('Moving file to cookbooks dir'){
+	 steps{
+			
+			sh 'mv $WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks'
+	    }
+	  }
+	
 	 stage('Upload the cookbook and add to the Node'){
 		steps{
 				/* add the cookbook in the node you can add all nodes */
