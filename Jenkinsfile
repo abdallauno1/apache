@@ -56,7 +56,7 @@ stages{
 	stage('Copy server credentials'){
 		steps{
 			withCredentials([file(credentialsId: 'CHEF-USER-KEY', variable: 'chef-user-key')]) {
-					         writeFile file: '~/chef-repo/.chef/abdallauno1.pem', text: readFile(chef-user-key)
+					         writeFile file: '~/chef-repo/.chef/abdallauno1.txt', text: 'Ciao'
 
 		   }
 		}
