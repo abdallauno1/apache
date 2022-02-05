@@ -110,7 +110,7 @@ stages{
 	 stage('Moving file to cookbooks dir'){
 	 steps{
 			
-			sh 'mv $WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks'
+			sh 'mv $WORKSPACE/apache ~/chef-repo/cookbooks'
 	    }
 	  }
 	
