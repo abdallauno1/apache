@@ -96,7 +96,7 @@ stages{
 			script{
 				def repoCloned  = fileExists '$WORKSPACE/apache'
 				    if (repoCloned){
-					  sh 'rm -rf $WORKSPACE/apache'
+					  sh 'rm -rf $WORKSPACE/apache/*'
 				    }else{
 					 					 
 					 echo "$JOB_NAME"     
@@ -109,9 +109,9 @@ stages{
 	 stage('Moving file to cookbooks dir'){
 		 steps{
 			 script{
-				def getRepo  = fileExists '$WORKSPACE/apache'
+				def getRepo  = fileExists '~/chef-repo/cookbooks/apache'
 				    if (getRepo){
-					  sh 'rm -rf $WORKSPACE/apache/*'
+					  sh 'rm -rf ~/chef-repo/cookbooks/apache/*'
 				    } 
 				   sh 'mv $WORKSPACE/apache/* ~/chef-repo/cookbooks'
 				}
