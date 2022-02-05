@@ -113,7 +113,7 @@ stages{
 				    if (getRepo){
 					  sh 'rm -rf $WORKSPACE/apache'
 				    } 
-				   sh 'mv $WORKSPACE/apache ~/chef-repo/cookbooks'
+				   sh 'mv $WORKSPACE/apache/* ~/chef-repo/cookbooks'
 				}
 		   	    }
 	            }
