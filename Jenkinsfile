@@ -110,7 +110,7 @@ stages{
 			}		
 		     }
 		 }
-
+	 }
 	 stage('Upload the cookbook and add to the Node'){
 		steps{
 				/* add the cookbook in the node you can add all nodes */
