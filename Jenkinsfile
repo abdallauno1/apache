@@ -92,9 +92,9 @@ stages{
 	stage('removing directory'){
 		steps{
 		    script{
-			def fileApa  = fileExists '$WORKSPACE/apache'
-			    if (fileApa){
-				    sh 'rm -rf $WORKSPACE/apache'	    
+		      def dirExists  = fileExists '$WORKSPACE/apache'
+			   if (dirExists){
+				 sh 'rm -rf $WORKSPACE/apache'	    
 			   }
 	   	     }
 		 }		
