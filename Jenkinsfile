@@ -92,9 +92,9 @@ stages{
 	stage('removing directory'){
 		steps{
 		    script{
-		      def dirExists  = fileExists '$WORKSPACE/apache'
+		      def dirExists  = fileExists '$WORKSPACE/apache/'
 			   if (dirExists){
-				 sh 'rm -rf $WORKSPACE/apache'	    
+				 sh 'rm -rf $WORKSPACE/apache/'	    
 			   }
 	   	     }
 		 }		
@@ -103,9 +103,9 @@ stages{
 	 stage('Clone github repo & download Cookbook'){
 		steps{
 			script{
-				def repoCloned  = fileExists '$WORKSPACE/apache'
+				def repoCloned  = fileExists '$WORKSPACE/apache/'
 				    if (repoCloned){
-					  sh 'rm -rf $WORKSPACE/apache'
+					  sh 'rm -rf $WORKSPACE/apache/'
 				    }else{
 					 					 
 					 echo "$JOB_NAME"     
