@@ -27,7 +27,7 @@ stages{
 	
 	stage('Clone github repo & download Cookbook'){
 		steps{
-			def cloned  = fileExists '/home/vagrant/jenkins-agent/workspace/chef-conf-pipeline/apache
+			def cloned  = fileExists '/home/vagrant/jenkins-agent/workspace/chef-conf-pipeline/apache'
 			if (cloned){
 				echo 'Skipping clone repo ... repo cloned'
 			}else{
@@ -44,7 +44,7 @@ stages{
 			echo 'Skipping creating directory ...directory present'
 		}else{
 		steps{
-			sh 'mkdir ~/chef-repo/ &&  mkdir ~/chef-repo/.chef '
+			sh 'mkdir ~/chef-repo/ &&  mkdir ~/chef-repo/.chef'
 		  }
 		}
 	}
