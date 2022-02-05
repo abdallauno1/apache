@@ -96,7 +96,7 @@ stages{
 			script{
 				def repoCloned  = fileExists '$WORKSPACE/apache'
 				    if (repoCloned){
-					  sh 'rm -rf $WORKSPACE/apache/*'
+					  sh 'rm -rf $WORKSPACE/apache'
 				    }else{
 					 					 
 					 echo "$JOB_NAME"     
