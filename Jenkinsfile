@@ -72,6 +72,7 @@ stages{
 					/* add all nodes you need */
 				      sh '''
 			      	    set +x
+			      	    cd ~/chef-repo/.chef
 			      	    knife bootstrap 192.168.1.70 -x vagrant -P vagrant --node-name test  --sudo -y
 
 					 '''
@@ -90,6 +91,7 @@ stages{
 			}
 		}
 	 }
+
 
 	 stage('Clone github repo & download Cookbook'){
 		steps{
