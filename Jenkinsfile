@@ -135,7 +135,7 @@ stages{
 			      sh '''
 				    set +x
 				    cd ~/chef-repo/cookbooks				  
-				    knife cookbook upload apache --force
+				    knife cookbook upload apache 
 				    knife node run_list add test recipe[apache::default]
 
 				 '''
