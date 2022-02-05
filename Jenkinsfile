@@ -42,10 +42,12 @@ stages{
 
 	stage('Copy server credentials'){
 		steps{
-			withCredentials([zip(credentialsId: 'CHEFREPO', variable: 'chef-server-creds')]){
-
-			  sh 'cp \$chef-server-creds ~/chef-repo/.chef'
-
+			withCredentials([file(credentialsId: 'CHEF-USER-KEY', variable: 'chef-user-key'),
+                 			 file(credentialsId: 'CHEF-ORG-KEY', variable: 'chef-org-key'),
+					 file(credentialsId: 'CHEF-CONFIG-KEY', variable: 'chef-org-config')]) {
+			  sh 'cp \$chef-user-key ~/chef-repo/.chef'
+			  sh 'cp \$chef-org-key ~/chef-repo/.chef'
+			  sh 'cp \$chef-org-config ~/chef-repo/.chef'		
 			  sh 'sudo rm -rf $WORKSPACE/Berksfile.lock'
 		/*
 			  sh 'mv $WORKSPACE/* $CHEFREPO/chef-repo/cookbooks/apache'
