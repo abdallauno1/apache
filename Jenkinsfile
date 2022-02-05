@@ -45,9 +45,9 @@ stages{
 			withCredentials([file(credentialsId: 'CHEF-USER-KEY', variable: 'chef-user-key'),
                  			 file(credentialsId: 'CHEF-ORG-KEY', variable: 'chef-org-key'),
 					 file(credentialsId: 'CHEF-CONFIG-KEY', variable: 'chef-org-config')]) {
-					         writeFile file: '~/chef-repo/.chef/abdallauno1.pem', text: readFile(chef-user-key)
-        					 writeFile file: '~/chef-repo/.chef/uno.pem', text: readFile(chef-org-key)
-						 writeFile file: '~/chef-repo/.chef/config.rb', text: readFile(chef-org-config)
+					         writeFile file: '~/chef-repo/.chef/abdallauno1.pem', text: readFile($chef-user-key)
+        					 writeFile file: '~/chef-repo/.chef/uno.pem', text: readFile($chef-org-key)
+						 writeFile file: '~/chef-repo/.chef/config.rb', text: readFile($chef-org-config)
         		/*			 
 			  sh "cp $chef-user-key ~/chef-repo/.chef"
 			  sh "cp $chef-org-key ~/chef-repo/.chef"
