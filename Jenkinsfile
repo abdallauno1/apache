@@ -98,7 +98,7 @@ stages{
 				    if (repoCloned){
 					  sh '''
 						echo 'Skipping clone repo ... repo cloned'
-						mv --backup=t $WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks
+						mv -sf $WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks
 
 					     '''	
 				    }else{
@@ -106,7 +106,7 @@ stages{
 					 echo "$JOB_NAME" 
 					    
 				}	
-				sh 'mv --backup=t $WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks'
+				sh 'mv -sf $WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks'
 		     }
 		 }
 	 }
