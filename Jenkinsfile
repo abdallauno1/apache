@@ -48,7 +48,6 @@ stages{
 			  sh "cp $chef-user-key ~/chef-repo/.chef"
 			  sh "cp $chef-org-key ~/chef-repo/.chef"
 			  sh "cp $chef-org-config ~/chef-repo/.chef"		
-			  sh 'sudo rm -rf $WORKSPACE/Berksfile.lock'
 		/*
 			  sh 'mv $WORKSPACE/* $CHEFREPO/chef-repo/cookbooks/apache'
 
