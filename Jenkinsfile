@@ -28,9 +28,9 @@ stages{
 	stage('Clone github repo & download Cookbook'){
 		steps{
 			script{
-			def repoCloned  = fileExists '/home/vagrant/jenkins-agent/workspace/chef-conf-pipeline/apache'
-			if (repoCloned){
-				echo 'Skipping clone repo ... repo cloned'
+				def repoCloned  = fileExists '/home/vagrant/jenkins-agent/workspace/chef-conf-pipeline/apache'
+				if (repoCloned){
+					echo 'Skipping clone repo ... repo cloned'
 			}else{
 				sh 'git clone https://github.com/abdallauno1/apache.git'
 			  }
@@ -42,17 +42,17 @@ stages{
 
 
 	stage ('Creating directory for the configuration...'){
-		script{
-	       		 def dirExists  = fileExists '/home/vagrant/chef-repo'
-			if (dirExists) {
-			echo 'Skipping creating directory ...directory present'
-		}else{
 		steps{
-			sh 'mkdir ~/chef-repo/ &&  mkdir ~/chef-repo/.chef'
-		  }
-			}			
-		}
-    }
+			script{
+		       	  def dirExists  = fileExists '/home/vagrant/chef-repo'
+				  if (dirExists) {
+					echo 'Skipping creating directory ...directory present'
+				}else{
+				    sh 'mkdir ~/chef-repo/ &&  mkdir ~/chef-repo/.chef'
+				}			
+			}
+    	  }
+    	}
 	stage('Copy server credentials'){
 		steps{
 			withCredentials([file(credentialsId: 'CHEF-USER-KEY', variable: 'chef-user-key'),
