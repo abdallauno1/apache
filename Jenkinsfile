@@ -33,9 +33,10 @@ stages{
 			}else{
 				sh 'git clone https://github.com/abdallauno1/apache.git'
 			}
+		     }
+		  }	
 		}
-	}	
-	
+	   }
 
 
 	stage ('Creating directory for the configuration...'){
@@ -47,8 +48,7 @@ stages{
 			sh 'mkdir ~/chef-repo/ &&  mkdir ~/chef-repo/.chef'
 		  }
 		}
-	}
-
+          }
 	stage('Copy server credentials'){
 		steps{
 			withCredentials([file(credentialsId: 'CHEF-USER-KEY', variable: 'chef-user-key'),
