@@ -58,7 +58,7 @@ stages{
 			withCredentials([file(credentialsId: 'chef-user-key', variable: 'USER')]) {
 					      sh '''
 					      	   set +x
-					      	   cp "$USER" > ~/chef-repo/.chef/
+					      	   cp "$USER"  ~/chef-repo/.chef/
 						   
 						 '''
 
