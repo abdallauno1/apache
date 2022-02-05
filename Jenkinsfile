@@ -134,8 +134,7 @@ stages{
 
 			      sh '''
 				    set +x
-				    cd ~/chef-repo/cookbooks
-				    knife cookbook delete apache -y
+				    cd ~/chef-repo/cookbooks				  
 				    knife cookbook upload apache --force
 				    knife node run_list add test recipe[apache::default]
 
