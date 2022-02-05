@@ -98,15 +98,13 @@ stages{
 				    if (repoCloned){
 					  sh '''
 						echo 'Skipping clone repo ... repo cloned'
-						mv -p $WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks
-
 					     '''	
 				    }else{
 					 sh 'git clone https://github.com/abdallauno1/apache.git' 					 
 					 echo "$JOB_NAME" 
 					    
 				}	
-				sh 'mv -p $WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks'
+				sh 'mv $WORKSPACE/$JOB_NAME/apache ~/chef-repo/cookbooks'
 		     }
 		 }
 	 }
