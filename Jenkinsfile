@@ -55,10 +55,10 @@ stages{
     	}
 	stage('Copy server credentials'){
 		steps{
-			withCredentials([zip(credentialsId: 'CHEFSERVER', variable: 'CHEF')]) {
+			withCredentials([file(credentialsId: 'chef-user-key', variable: 'USER')]) {
 					      sh '''
 					      	   set +x
-					      	   unzip  "$CHEF" -d ~/chef-repo/.chef/
+					      	   cp --recursive "$USER"  ~/chef-repo/.chef/
 						   
 						 '''
 
