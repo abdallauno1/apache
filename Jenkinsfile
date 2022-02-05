@@ -134,14 +134,10 @@ stages{
 
 	  stage('Upload  cookbook and Run the cookbook'){
 		steps{
-
-			      sh '''
-		      	    set +x
     			withCredentials ([sshUserPrivateKey(credentialsId: 'vagrant-test', keyFileVariable: 'AGENT_SSHKEY', passphraseVariable: '',usernameVariable:'')]){
-			  	sh "kinfe ssh 'role:webserver' -x vagrant -i $AGENT_SSHKEY 'sudo chef-client'"
-
+			   sh "kinfe ssh 'role:webserver' -x vagrant -i $AGENT_SSHKEY 'sudo chef-client'"
 			 } 
-			 '''
+			
 		}
 	     }
 
