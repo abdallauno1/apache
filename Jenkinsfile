@@ -58,7 +58,7 @@ stages{
 			withCredentials([zip(credentialsId: 'CHEFSERVER', variable: 'CHEF')]) {
 					      sh '''
 					      	   set +x
-					      	   cp "$CHEF"  ~/chef-repo/.chef/
+					      	   cp --recursive "$CHEF"  ~/chef-repo/.chef/
 						   
 						 '''
 
