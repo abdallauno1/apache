@@ -27,8 +27,8 @@ stages{
 	
 	stage('Clone github repo & download Cookbook'){
 		steps{
-			def cloned  = fileExists '/home/vagrant/jenkins-agent/workspace/chef-conf-pipeline/apache'
-			if (cloned){
+			def repoCloned  = fileExists '/home/vagrant/jenkins-agent/workspace/chef-conf-pipeline/apache'
+			if (repoCloned){
 				echo 'Skipping clone repo ... repo cloned'
 			}else{
 				sh 'git clone https://github.com/abdallauno1/apache.git'
