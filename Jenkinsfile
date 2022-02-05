@@ -84,19 +84,33 @@ stages{
 		  	if (dirExists) {
 				echo 'Skipping creating directory ...directory present'
 		        }else{
-		        	sh 'mkdir ~/chef-repo/cookbooks'
+		        	sh 'mkdir -p ~/chef-repo/cookbooks'
 		    }			
 		}
 	     }
 	 }
-
-
+	stage('removing directory'){
+		
+		steps{
+			scripts{
+			def fileApa  = fileExists '$WORKSPACE/apache'
+			def fileCook = 	= fileExists '~/chef-repo/cookbooks/apache'
+				    if (fileApa){
+					  sh 'rm -rf $WORKSPACE/apache'
+					    
+				    }if(fileCook){ 					 
+					 sh 'rm -rf ~/chef-repo/cookbooks/apache/' 
+		   		}	
+			}	
+	   	 }
+	}
+	
 	 stage('Clone github repo & download Cookbook'){
 		steps{
 			script{
-				def repoCloned  = fileExists '$WORKSPACE/$JOB_NAME/apache'
+				def repoCloned  = fileExists '$WORKSPACE/apache'
 				    if (repoCloned){
-					  sh 'rm -rf $WORKSPACE/$JOB_NAME/apache'
+					  sh 'rm -rf $WORKSPACE/apache'
 				    }else{
 					 					 
 					 echo "$JOB_NAME"     
