@@ -101,7 +101,7 @@ stages{
 
 					sh '''
 						echo 'Skipping clone repo ... repo cloned'
-						mv $fileExists ~/chef-repo/cookbooks
+						mv $repoCloned ~/chef-repo/cookbooks
 
 					   '''	
 			}else{
