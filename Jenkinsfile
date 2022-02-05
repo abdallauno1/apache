@@ -121,24 +121,20 @@ stages{
 			      sh '''
 				    set +x
 				    cd ~/chef-repo/cookbooks
-				    knife cookbook upload apache
+				    knife cookbook upload apache --force
 				    knife node run_list add test recipe[apache::default]
 
 				 '''
 		}
 	   }
 
-	  stage('Run the cookbook'){
+	  stage('Upload  cookbook and Run the cookbook'){
 		steps{
 
 			      sh '''
 		      	    set +x
-		      	    cd ~/chef-repo/cookbooks
-		      	    knife cookbook upload apache
-		      	    knife node run_list add test recipe[apache::default]
     			withCredentials ([sshUserPrivateKey(credentialsId: 'vagrant-test', keyFileVariable: 'AGENT_SSHKEY', passphraseVariable: '',usernameVariable:'')]){
-
-			  		sh "kinfe ssh 'role:webserver' -x vagrant -i $AGENT_SSHKEY 'sudo chef-client'"
+			  	sh "kinfe ssh 'role:webserver' -x vagrant -i $AGENT_SSHKEY 'sudo chef-client'"
 
 			 } 
 			 '''
