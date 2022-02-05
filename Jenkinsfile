@@ -104,7 +104,7 @@ stages{
 				    }else{
 					 sh '''
 				 		sh 'git clone https://github.com/abdallauno1/apache.git'
-				 		 mv $WORKSPACE/$JOB_NAME/apache
+				 		mv /home/vagrant/jenkins-agent/workspace/$JOB_NAME/apache
 				 	   '''
 			   }
 			}		
