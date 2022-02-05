@@ -91,19 +91,6 @@ stages{
 		}
 	 }
 
-	 stage('Creating cookbooks directory...'){
-	    steps{
-			script{
-	       	  def dirCookbook  = fileExists '/home/vagrant/cookbooks'
-			  if (dirCookbook) {
-				echo 'Skipping creating directory ...directory present'
-			}else{
-			    sh 'mkdir ~/chef-repo/cookbooks'
-				}			
-			}
-		}
-	 }
-
 	 stage('Clone github repo & download Cookbook'){
 		steps{
 			script{
