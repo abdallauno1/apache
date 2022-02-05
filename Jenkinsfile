@@ -36,57 +36,55 @@ stages{
 				    sh 'mkdir ~/chef-repo/ &&  mkdir ~/chef-repo/.chef'
 				}			
 			}
-    	  }
+    	      }
     	}
 	stage('Copy server credentials'){
 		steps{
-			withCredentials([file(credentialsId: 'chef-user-key', variable: 'USER'),
-					 file(credentialsId: 'chef-org-key',  variable: 'ORG'),
-					 file(credentialsId: 'chef-config-key', variable: 'CONFIG')]) {
-				      sh '''
-				      	    set +x
-				      	    sudo cp --recursive "$USER"  ~/chef-repo/.chef/
-					   		sudo cp --recursive "$ORG"  ~/chef-repo/.chef/
-					   		sudo cp --recursive "$CONFIG"  ~/chef-repo/.chef/
-					   		cd ~/chef-repo/.chef/
+		withCredentials([file(credentialsId: 'chef-user-key', variable: 'USER'),
+				 file(credentialsId: 'chef-org-key',  variable: 'ORG'),
+				 file(credentialsId: 'chef-config-key', variable: 'CONFIG')]) {
+			      sh '''
+				    set +x
+				    sudo cp --recursive "$USER"  ~/chef-repo/.chef/
+						sudo cp --recursive "$ORG"  ~/chef-repo/.chef/
+						sudo cp --recursive "$CONFIG"  ~/chef-repo/.chef/
+						cd ~/chef-repo/.chef/
 
-					   	
-					 '''
-
+				 '''
 		   }
-		}
+	    }
 	 }
 	 stage('knife SSL certificates from the server'){
 		steps{
 
-				      sh '''
-				      	    set +x
-				      	    cd ~/chef-repo
-				      	    sudo knife ssl fetch
+		      sh '''
+			    set +x
+			    cd ~/chef-repo
+			    sudo knife ssl fetch
 
-					 '''
+			 '''
 		}
 	 }
 	 stage('Bootstrap a Node'){
 		steps{
-					/* add all nodes you need */
-				      sh '''
-			      	    set +x
-			      	    cd ~/chef-repo/.chef
-			      	    knife bootstrap 192.168.1.70 -x vagrant -P vagrant --node-name test  --sudo -y
+		/* add all nodes you need */
+	      sh '''
+	    	 set +x
+	   	 cd ~/chef-repo/.chef
+	   	 knife bootstrap 192.168.1.70 -x vagrant -P vagrant --node-name test  --sudo -y
 
-					 '''
+		 '''
 		}
 	 }
 	 
  	 stage('Creating cookbooks directory...'){
 	    steps{
 		script{
-		  def dirCookbook  = fileExists '~/chef-repo/cookbooks'
-		  if (dirCookbook) {
-			echo 'Skipping creating directory ...directory present'
-		   }else{
-		        sh 'mkdir ~/chef-repo/cookbooks'
+		  def dirExists  = fileExists '/home/vagrant/chef-repo/cookbooks'
+		  	if (dirExists) {
+				echo 'Skipping creating directory ...directory present'
+		        }else{
+		        	sh 'mkdir ~/chef-repo/cookbooks'
 		    }			
 		}
 	     }
@@ -110,9 +108,9 @@ stages{
 				 		 mv $WORKSPACE/$JOB_NAME/apache
 				 	   '''
 
-			  }
+			   }
 			}		
-		   }
+		     }
 		 }
 
 	 stage('Upload the cookbook and add to the Node'){
@@ -120,10 +118,10 @@ stages{
 				/* add the cookbook in the node you can add all nodes */
 
 			      sh '''
-		      	    set +x
-		      	    cd ~/chef-repo/cookbooks
-		      	    knife cookbook upload apache
-		      	    knife node run_list add test recipe[apache::default]
+				    set +x
+				    cd ~/chef-repo/cookbooks
+				    knife cookbook upload apache
+				    knife node run_list add test recipe[apache::default]
 
 				 '''
 		}
