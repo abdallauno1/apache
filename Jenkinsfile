@@ -140,13 +140,13 @@ stages{
 		}
 	   }
 
-	  stage('Upload  cookbook and Run the cookbook'){
+	  stage(' Run the cookbook'){
 		steps{
 				/* add the cookbook in the node you can add all nodes */
 			      sh '''
 				    set +x
 				    cd ~/chef-repo/cookbooks				  
-				    chef-run vagrant@test /home/vagrant/chef-repo/cookbooks/apache-example/recipes/default.rb --password test
+				    chef-run vagrant@test /home/vagrant/chef-repo/cookbooks/apache-example/recipes/default.rb --password vagrant
 				 '''
 		}
 	     }
