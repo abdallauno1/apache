@@ -91,9 +91,9 @@ stages{
 	stage('removing directory'){
 		steps{
 		    script{
-		      def dirExists  = fileExists '$WORKSPACE/apache-example/'
+		      def dirExists  = fileExists '$WORKSPACE/app-test/'
 			   if (dirExists){
-				 sh 'rm -rf $WORKSPACE/apache-example/'	    
+				 sh 'rm -rf $WORKSPACE/app-test/'	    
 			   }
 	   	     }
 		 }		
@@ -102,14 +102,14 @@ stages{
 	 stage('Clone github repo & download Cookbook'){
 		steps{
 			script{
-				def repoCloned  = fileExists '$WORKSPACE/apache-example/'
+				def repoCloned  = fileExists '$WORKSPACE/app-test/'
 				    if (repoCloned){
-					  sh 'rm -rf $WORKSPACE/apache-example/'
+					  sh 'rm -rf $WORKSPACE/app-test/'
 				    }else{
 					 					 
 					 echo "$JOB_NAME"     
 				}
-				sh 'git clone https://github.com/abdallauno1/apache-example.git' 
+				sh 'git clone https://github.com/abdallauno1/app-test.git' 
 		   	  }
 		      }
 	  	}
@@ -117,12 +117,12 @@ stages{
 	 stage('Moving file to cookbooks dir'){
 		 steps{
 			 script{
-				def getRepo  = fileExists '~/chef-repo/cookbooks/apache-example'
+				def getRepo  = fileExists '~/chef-repo/cookbooks/app-test'
 				    if (getRepo){
-					  sh 'rm -rf ~/chef-repo/cookbooks/apache-example/'
+					  sh 'rm -rf ~/chef-repo/cookbooks/app-test/'
 				    } 
 				  
-				   sh 'mv $WORKSPACE/apache-example ~/chef-repo/cookbooks/'
+				   sh 'mv $WORKSPACE/app-test ~/chef-repo/cookbooks/'
 				}
 		   	    }
 	            }
@@ -133,8 +133,8 @@ stages{
 			      sh '''
 				    set +x
 				    cd ~/chef-repo/cookbooks				  
-				    knife cookbook upload apache-example 
-				    knife node run_list add test recipe[apache-example::default]
+				    knife cookbook upload app-test 
+				    knife node run_list add test recipe[app-test::default]
 
 				 '''
 		}
