@@ -122,7 +122,7 @@ stages{
 					  sh 'rm -rf ~/chef-repo/cookbooks/apache-example/'
 				    } 
 				  
-				   sh 'mv $WORKSPACE/apache ~/chef-repo/cookbooks/'
+				   sh 'mv $WORKSPACE/apache-example ~/chef-repo/cookbooks/'
 				}
 		   	    }
 	            }
