@@ -46,9 +46,8 @@ stages{
 			      sh '''
 				    set +x
 				    sudo cp --recursive "$USER"  ~/chef-repo/.chef/
-						sudo cp --recursive "$ORG"  ~/chef-repo/.chef/
-						sudo cp --recursive "$CONFIG"  ~/chef-repo/.chef/
-						cd ~/chef-repo/.chef/
+				    sudo cp --recursive "$ORG"  ~/chef-repo/.chef/
+				    sudo cp --recursive "$CONFIG"  ~/chef-repo/.chef/
 
 				 '''
 		   }
@@ -131,7 +130,6 @@ stages{
 	 stage('Upload the cookbook and add to the Node'){
 		steps{
 				/* add the cookbook in the node you can add all nodes */
-
 			      sh '''
 				    set +x
 				    cd ~/chef-repo/cookbooks				  
