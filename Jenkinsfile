@@ -142,10 +142,12 @@ stages{
 
 	  stage('Upload  cookbook and Run the cookbook'){
 		steps{
-    			withCredentials ([sshUserPrivateKey(credentialsId: 'vagrant-test', keyFileVariable: 'AGENT_SSHKEY', passphraseVariable: '',usernameVariable:'')]){
-			   sh "knife ssh -i $AGENT_SSHKEY 'sudo chef-client'"
-			 } 
-			
+				/* add the cookbook in the node you can add all nodes */
+			      sh '''
+				    set +x
+				    cd ~/chef-repo/cookbooks				  
+				    chef-run vagrant@test /home/vagrant/chef-repo/cookbooks/apache-example/recipes/default.rb --password test
+				 '''
 		}
 	     }
 
