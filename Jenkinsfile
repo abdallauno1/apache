@@ -144,9 +144,7 @@ stages{
 		steps{
 				/* add the cookbook in the node you can add all nodes */
 			      sh '''
-				    set +x
-				    cd ~/chef-repo/cookbooks				  
-				    chef-run vagrant@test /home/vagrant/chef-repo/cookbooks/apache-example/recipes/default.rb --password vagrant
+					ssh vagrant@test sudo chef-client
 				 '''
 		}
 	     }
