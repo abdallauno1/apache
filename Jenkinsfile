@@ -75,7 +75,7 @@ stages{
 	    
 	   	 cd ~/chef-repo/.chef
 		 sudo chmod -R 777 .
-	   	 sudo knife bootstrap 192.168.1.70 -x vagrant -P vagrant --node-name test  --sudo -y
+	   	 knife bootstrap 192.168.1.70 -x vagrant -P vagrant --node-name test  --sudo -y chef-client --chef-license accept
 
 		 '''
 		}
