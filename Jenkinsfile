@@ -38,6 +38,7 @@ stages{
 			}
     	      }
     	}
+	/*
 	stage('Copy server credentials'){
 		steps{
 		withCredentials([file(credentialsId: 'chef-user-key', variable: 'USER'),
@@ -53,6 +54,7 @@ stages{
 		   }
 	    }
 	 }
+	 */
 	 stage('knife SSL certificates from the server'){
 		steps{
 
