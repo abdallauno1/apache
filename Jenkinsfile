@@ -1,5 +1,5 @@
 pipeline {
-	agent {label 'vagrant-worker'}
+	agent {label 'vagrant-workstation'}
 stages{
     stage ('Update machine'){
 	 steps {
