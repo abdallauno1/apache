@@ -107,9 +107,9 @@ stages{
 	 stage('Clone github repo & download Cookbook'){
 		steps{
 			script{
-				def repoCloned  = fileExists '$WORKSPACE/app-test/'
+				def repoCloned  = fileExists '$WORKSPACE/app-test'
 				    if (repoCloned){
-					  sh 'rm -rf $WORKSPACE/app-test/'
+					  sh 'rm -rf $WORKSPACE/app-test'
 				    }else{
 					 					 
 					 echo "$JOB_NAME"     
