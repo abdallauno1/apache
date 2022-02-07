@@ -114,6 +114,7 @@ stages{
 					 					 
 					 echo "$JOB_NAME"     
 				}
+				sh 'rm -rf $WORKSPACE/app-test'
 				sh 'git clone https://github.com/abdallauno1/app-test.git' 
 		   	  }
 		      }
