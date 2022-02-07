@@ -73,7 +73,7 @@ stages{
 	    
 	   	 cd ~/chef-repo/.chef
 		 sudo chmod -R 777 .
-	   	 knife bootstrap 192.168.1.70 -x vagrant -P vagrant --node-name test  --sudo -y
+	   	 sudo knife bootstrap 192.168.1.70 -x vagrant -P vagrant --node-name test  --sudo -y
 
 		 '''
 		}
