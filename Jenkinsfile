@@ -70,7 +70,7 @@ stages{
 		steps{
 		/* add all nodes you need */
 	      sh '''
-	    	 set +x
+	    
 	   	 cd ~/chef-repo/.chef
 		 sudo chmod -R 777 .
 	   	 knife bootstrap 192.168.1.70 -x vagrant -P vagrant --node-name test  --sudo -y
