@@ -60,7 +60,7 @@ stages{
 			    set +x
 			    cd ~/chef-repo
 			    cd ~/chef-repo/.chef
-			    sudo chmod -R 700 .
+			    sudo chmod -R 777 .
 			    sudo knife ssl fetch
 
 			 '''
