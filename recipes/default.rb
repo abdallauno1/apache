@@ -19,17 +19,16 @@ package 'Install Apache' do
 		        action [:enable, :start]
 		  end
 		end
-		FileUtils.cp_r 'src/.', 'dest'
+		# FileUtils.cp_r 'src/.', 'dest'
 		file '/var/www/html/index.html' do
-		content 'string = <<-EOF
-		
+		content '
 			<!DOCTYPE html>
 				<html>
 				<head>
 				</head>
 					<body>
 					<p>Hello Steve, There is Mady fro DevOps</p><br><br>
-					<p>Current Date and Time is <span id='date-time'></span>.</p>
+					<p>Current Date and Time is <span id=\n'date-time'></span>.</p>
 						<script>
 							var dt = new Date();
 							document.getElementById('date-time').innerHTML=dt;
