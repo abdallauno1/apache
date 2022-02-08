@@ -28,10 +28,10 @@ package 'Install Apache' do
 				</head>
 					<body>
 					<p>Hello Steve, There is Mady fro DevOps</p><br><br>
-					<p>Current Date and Time is <span id=\n'date-time'></span>.</p>
+					<p>Current Date and Time is <span id=\t'date-time'></span>.</p>
 						<script>
 							var dt = new Date();
-							document.getElementById('date-time').innerHTML=dt;
+							document.getElementById(\t'date-time').innerHTML=dt;
 						</script>
 					</body>
 				</html>
