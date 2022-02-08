@@ -19,6 +19,7 @@ package 'Install Apache' do
 		        action [:enable, :start]
 		  end
 		end
+		FileUtils.cp_r 'src/.', 'dest'
 		file '/var/www/html/index.html' do
 		content 'string = <<-EOF
 		
