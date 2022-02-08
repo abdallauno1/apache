@@ -20,6 +20,22 @@ package 'Install Apache' do
 		  end
 		end
 		file '/var/www/html/index.html' do
-		content 'Ciaoooooo'
+		content 'string = <<-EOF
+		
+			<!DOCTYPE html>
+				<html>
+				<head>
+				</head>
+					<body>
+					<p>Hello Steve, There is Mady fro DevOps</p><br><br>
+					<p>Current Date and Time is <span id='date-time'></span>.</p>
+						<script>
+							var dt = new Date();
+							document.getElementById('date-time').innerHTML=dt;
+						</script>
+					</body>
+				</html>
+				
+                  EOF '
 
 		end
