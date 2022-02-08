@@ -27,11 +27,11 @@ package 'Install Apache' do
 				<head>
 				</head>
 				<style>
-				p { color: #333333; border: 2px solid powderblue; margin: 50px; font-family: "Helvetica Neue",Arial,sans-serif; 
+				p { color: #333333; border: 2px solid #333333; margin: 50px; font-family: "Helvetica Neue",Arial,sans-serif; 
 					font-size: 16px; font-weight: 300; line-height: 1.5625; margin-bottom: 15px; }
 				</style>
 					<body>
-					<p>Hello Steve, There is Mady fro DevOps</p><br><br>
+					<p>Hello Steve, Im Mady from DevOps</p><br>
 					<p>Current Date and Time is <span id="datetime"></span>.</p>
 						<script>
 							var dt = new Date();
